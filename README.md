@@ -4,7 +4,18 @@ Este repositório contém um exemplo de configuração de um pipeline de Integra
 
 ## Estrutura do Repositório
 
-java-ci-pipeline/ ├── src/ │ ├── main/ │ │ └── java/ │ └── test/ │ └── java/ ├── .github/ │ └── workflows/ ├── .gitignore ├── README.md └── pom.xml
+java-ci-pipeline/ 
+├── src/ 
+│ ├── main/ 
+│ │   └── java/
+│ └── test/
+│     └── java/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── .gitignore
+├── README.md
+└── pom.xml
 
 ## Etapas do Pipeline
 
