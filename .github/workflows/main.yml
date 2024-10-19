@@ -18,16 +18,33 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
 
     - name: Display Maven version
       run: mvn -v
-      working-directory: ./hello-world-example
 
     - name: Build with Maven
       run: mvn clean install
-      working-directory: ./hello-world-example
 
     - name: Run tests
       run: mvn test
-      working-directory: ./hello-world-example
+
+    - name: Run SonarCloud scan
+      uses: sonarsource/sonarcloud-github-action@v1.5
+      with:
+        projectKey: YOUR_PROJECT_KEY
+        organization: YOUR_ORGANIZATION
+        token: ${{ secrets.SONAR_TOKEN }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./target/site
