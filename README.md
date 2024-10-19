@@ -1,3 +1,5 @@
-# Hello World Example
+# Java CI Pipeline
 
-This repository is a template for exploring CI/CD practices.
+Este repositório contém um exemplo de configuração de um pipeline de Integração Contínua (CI) para um projeto Java utilizando GitHub Actions.
+
+## Estrutura do Repositório
