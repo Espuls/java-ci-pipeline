@@ -6,8 +6,7 @@
 /build/
 /.gradle/
 /target/
-
-# eclipse files
-.project
-.classpath
-/.settings/
+*.class
+*.jar
+*.war
+*.ear
