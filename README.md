@@ -15,7 +15,7 @@ java-ci-pipeline/ ├── src/ │ ├── main/ │ │ └── java/ │
 
 ## Diagrama do Pipeline
 
-![Diagrama do Pipeline](path/to/diagram.png)
+![image](https://github.com/user-attachments/assets/38669230-c58d-4724-a053-8ef49ecbed1e)
 
 ## Como Executar
 
