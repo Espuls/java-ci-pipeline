@@ -26,20 +26,20 @@ jobs:
 
     - name: Display Maven version
       run: mvn -v
-      working-directory: ./java-ci-pipeline
 
    - name: Build with Maven
       run: mvn clean install
-      working-directory: ./java-ci-pipeline
 
     - name: Run tests
       run: mvn test
-      working-directory: ./java-ci-pipeline
 
     - name: Run SonarCloud scan
-      uses: sonarsource/sonarcloud-github-action@v2.1.0
+      uses: sonarsource/sonarcloud-github-action@v1.5
       env:
         token: ${{ secrets.SONAR_TOKEN }}
+
+    - name: Run tests and generate coverage report
+      run: mvn verify
 
   deploy:
     needs: build
