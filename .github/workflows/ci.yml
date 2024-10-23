@@ -36,7 +36,7 @@ jobs:
       - name: Run SonarCloud scan
         uses: sonarsource/sonarcloud-github-action@v2.1.0
         env:
-          sonar_token: ${{ secrets.SONAR_TOKEN }}
+          token: ${{ secrets.SONAR_TOKEN }}
 
       - name: Upload coverage report to SonarCloud
         env:
@@ -52,7 +52,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
