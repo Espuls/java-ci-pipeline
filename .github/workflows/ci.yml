@@ -15,19 +15,22 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        cache: maven
 
     - name: Display Maven version
       run: mvn -v
 
-    - name: Build with Maven
-      run: mvn -B verify sonar:sonar -Dsonar.projectKey=javareachabilityy -Dsonar.organization=javareachabilityy -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN
-      env:
-        GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
-        SONARCLOUD_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+   - name: Build with Maven
+      run: mvn clean install
 
     - name: Run tests
       run: mvn test
+
+    - name: Run SonarCloud scan
+      uses: sonarsource/sonarcloud-github-action@v1.5
+      with:
+        projectKey: espuls
+        organization: Erick Puls
+        token: ${{ secrets.SONAR_TOKEN }}
 
   deploy:
     needs: build
