@@ -36,12 +36,12 @@ jobs:
       - name: Run SonarCloud scan
         uses: sonarsource/sonarcloud-github-action@v2.1.0
         env:
-          token: ${{ secrets.SONAR_TOKEN }}
+          sonar_token: ${{ secrets.SONAR_TOKEN }}
 
       - name: Upload coverage report to SonarCloud
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          token: ${{ secrets.SONAR_TOKEN }}
+          sonar_token: ${{ secrets.SONAR_TOKEN }}
         run: mvn sonar:sonar -Dsonar.projectKey=PROJECT_KEY -Dsonar.organization=ORGANIZATION
 
   deploy:
@@ -52,7 +52,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
