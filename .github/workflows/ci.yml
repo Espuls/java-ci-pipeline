@@ -28,9 +28,9 @@ jobs:
     - name: Run SonarCloud scan
       uses: sonarsource/sonarcloud-github-action@v1.5
       with:
-        projectKey: YOUR_PROJECT_KEY
-        organization: YOUR_ORGANIZATION
-        token: ${{ secrets.SONAR_TOKEN }}
+        projectKey: espuls
+        organization: Erick Puls
+        token: e3de436ba1fcb27a17e5f1f891298f2adaa3e854
 
   deploy:
     needs: build
