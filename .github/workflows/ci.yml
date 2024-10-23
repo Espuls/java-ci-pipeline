@@ -24,16 +24,22 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
+      - name: Display Maven version
+        run: mvn -v
+        working-directory: ./java-ci-pipeline
+
       - name: Build with Maven
-        run: mvn -B clean verify
+        run: mvn clean install
+        working-directory: ./java-ci-pipeline
 
       - name: Run tests and generate coverage report
         run: mvn test jacoco:report
+        working-directory: ./java-ci-pipeline
 
       - name: Run SonarCloud scan
-        uses: sonarsource/sonarcloud-github-action@v1.5
+        uses: sonarsource/sonarcloud-github-action@v2.1.0
         env:
-          token: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Upload coverage report to SonarCloud
         env:
@@ -49,10 +55,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./target/site
