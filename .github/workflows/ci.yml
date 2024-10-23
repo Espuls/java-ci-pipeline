@@ -31,7 +31,7 @@ jobs:
         run: mvn test jacoco:report
 
       - name: Run SonarCloud scan
-        uses: sonarsource/sonarcloud-github-action@v2.1.0
+        uses: sonarsource/sonarcloud-github-action@v1.5
         env:
           token: ${{ secrets.SONAR_TOKEN }}
 
