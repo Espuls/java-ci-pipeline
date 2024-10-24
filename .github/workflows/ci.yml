@@ -36,10 +36,8 @@ jobs:
     - name: Run SonarCloud scan
       uses: sonarsource/sonarcloud-github-action@v2.1.0
       with:
-        args: >
-          -Dsonar.projectKey=espuls
-          -Dsonar.organization=Erick Puls
-      env:
+        projectKey: espuls
+        organization: Erick Puls
         token: ${{ secrets.SONAR_TOKEN }}
 
     - name: Upload coverage report to SonarCloud
