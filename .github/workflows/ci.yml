@@ -27,11 +27,8 @@ jobs:
     - name: Display Maven version
       run: mvn -v
 
-    - name: Build with Maven
-      run: mvn clean install
-
-    - name: Run tests and generate coverage report
-      run: mvn test jacoco:report
+    - name: Build with Maven, Run tests and generate coverage report
+      run: mvn clean install test jacoco:report sonar:sonar
 
     - name: Run SonarCloud scan
       uses: sonarsource/sonarcloud-github-action@v2.1.0
