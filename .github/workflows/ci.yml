@@ -34,12 +34,9 @@ jobs:
       run: mvn test jacoco:report
 
     - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        args: >
-          -Dsonar.projectKey=PROJECT_KEY 
-          -Dsonar.organization=ORGANIZATION
+      run: mvn sonar:sonar -Dsonar.projectKey=PROJECT_KEY -Dsonar.organization=ORGANIZATION
       
   deploy:
     needs: build
