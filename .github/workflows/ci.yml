@@ -39,7 +39,6 @@ jobs:
         args: >
           -Dsonar.projectKey=espuls
           -Dsonar.organization=Erick Puls
-          -Dsonar.host.url=http://sonarcloud.io
       env:
         token: ${{ secrets.SONAR_TOKEN }}
 
