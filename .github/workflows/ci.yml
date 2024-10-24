@@ -32,6 +32,11 @@ jobs:
 
     - name: Run tests and generate coverage report
       run: mvn test jacoco:report
+
+    - name: Run SonarCloud scan
+      uses: sonarsource/sonarcloud-github-action@v2.1.0
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
   deploy:
     needs: build
