@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
 
@@ -27,11 +27,14 @@ jobs:
     - name: Display Maven version
       run: mvn -v
 
-    - name: Build with Maven, Run tests and generate coverage report
-      run: mvn clean install test jacoco:report sonar:sonar
+    - name: Build with Maven
+      run: mvn clean install
 
-    - name: Run SonarCloud scan
-      uses: sonarsource/sonarcloud-github-action@v2.1.0
+    - name: Run tests and generate coverage report
+      run: mvn test jacoco:report
+
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
@@ -41,7 +44,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
           fetch-depth: 0
 
